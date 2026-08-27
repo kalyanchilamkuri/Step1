@@ -20,3 +20,9 @@ const myfunc=function(){
 }
 
 myfunc();
+
+
+// stack (primitive) , Heap (non-primitive) 
+
+
+
