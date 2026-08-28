@@ -51,3 +51,5 @@ ar.splice(2,0,30) // starts at index 2 , removes 0 elements and adds 30
 arr.splice(2,1,30,40) // starts at index 2 , removes 1 element and adds 30 and 40 
 
 // join() converts an array into a string using a separator. slice() gives me a portion of an array without changing the original array. But splice() changes the original array, and I can use it to add, remove, or replace elements. So the main difference I remember is that slice() does not modify the array, while splice() modifies it.
+
+
