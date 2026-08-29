@@ -65,3 +65,75 @@ getData();
 //async -> functions returns a promise 
 // await -> wait for a promise result inside async function 
 // try/catch -> handle errors 
+
+
+//Promise ? => a promise is an object that represents the future result of an aysnchronous operation 
+
+// It means i will give you a result later 
+
+// promise has 3 states a)pending b)fulfilled c)Rejected 
+
+// pending => it means the operation is still running 
+// fulfilled => the operation was successful 
+// Rejected => Failed 
+
+//example 
+
+new Promise((resolve,reject)=>{
+    // pending 
+    resolve("Success");
+    //Fulfilled
+});
+
+// resolve() => It means the operation was successful 
+
+const promise=new Promise((resolve,reject)=>{
+    resolve("Task Completed");
+});
+
+// I can get the result using .then()
+
+promise.then((result)=>{
+    console.log(result);
+});
+
+// reject() => The operation failed 
+
+const prom=new Promise((resolve,reject)=>{
+    resolve("something went wrong")
+})
+
+// we can handle this with catch()
+
+prom.catch((err)=>{
+    console.log(err)
+})
+
+// .then() is used when the promise is successful 
+
+// .catch() is used when the promise is rejected 
+
+// .finally() => runs whether the promise is successful or fails 
+
+promise.then((result)=>console.log(result)).catch((error)=>console.log(error)).finally(()=>console.log("finished"));
+
+// promise chaining , values passes 
+
+Promise.resolve(10).then((value)=>value*2).then((value)=>console.log(value));
+
+
+// example 
+
+console.log("A");
+
+setTimeout(()=>{
+    console.log("B");
+},0);
+
+Promise.resolve().then(()=>console.log("C"));
+
+console.log("D");
+
+// answer => A D C B 
+
+// understanding the call stack 
