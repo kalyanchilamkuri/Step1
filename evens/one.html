@@ -1,0 +1,133 @@
+
+// what is an event? 
+
+<!-- an event is something that happens on a webpage like click a button , move the mouse , keydown , submit , an input value changes  -->
+
+<button id="btn">click me</button>
+
+<div id="parent">
+    <button id="child">
+        Click
+    </button>
+</div>
+
+
+<ul id="list">
+    <li>Apple</li>
+    <li>Mango</li>
+    <li>Banana</li>
+</ul>
+
+
+<!-- a complete practical example  -->
+
+<input type="text" id="input">
+<button id="btn">Add</button>
+<ul id="list"></ul>
+
+<script>
+    const button=docuement.querySelector("#btn");
+    button.addEventListener("click",()=>{
+        console.log("button clicked");
+    });
+
+    // add event listener (most important for handling events)
+
+    // Event object  -> when an event occurs , js gives me an event object containing information about that event 
+    // I can use event.target to find the element that triggered the event 
+
+    // preventDefault -> i dont want the browsers default action to happen like ....normalyy submitting the form can reload/navigate the page 
+
+    button.addEventListener("click",(event)=>{
+        console.log(event);
+    });
+
+    // onclick vs addEventListener 
+
+    button.onclick=()=>{
+        console.log("onclick");
+    }
+
+    button.addEventListener("click",()=>{
+        console.log("addEventListener");
+    });
+
+    // I generally prefer addEventListener because I can attach multiple listeners to the same event
+
+    // Event Bubbling 
+
+    // suppose i have this 
+
+   // <div id="parent"><button id="child">Click</button></div>
+
+   const child=document.querySelector('#child');
+   const parent=document.querySelector('#parent');
+
+   parent.addEventListener('click',()=>{
+    console.log("parent");
+   })
+
+   child.addEventListener('click',()=>{
+    console.log("child");
+   })
+
+   // stoppropogation
+
+   // If i dont want the event to move to the parent 
+
+   child.addEventListener("click",(event)=>{
+    event.stopPropagation();
+    console.log("child");
+   });
+
+   // now clicking this button gives child 
+
+   // Event Capturing 
+
+   // there are basically three stages 1) capturing 2)target 3) bubbling 
+
+   // Event delegation 
+
+   // suppose i have ul and so many lis then instead of adding event listening to all lis separately i can add one to the parent 
+
+   const list=document.querySelector("#list");
+
+   list.addEventListener("click",(event)=>{
+    console.log(event.target.textContext);
+   });
+
+   //complete practical example 
+
+   const input=document.querySelector('#input')
+   const button=document.querySelector('#btn');
+   const listt=document.querySelector('#list');
+
+   button.addEventListener("click",()=>{
+     const text=input.value;
+     const li=document.createElement("li");
+     li.textContent=text;
+     list.appendChild(li);
+     input.value="";
+   })
+
+
+
+   // event => something happens 
+   // addEventListener() => listen for an event 
+   // event => information about the event 
+   // event.target => element that triggered the event 
+   // preventDefault() => stop browser's default behavior
+   // stopPropagation() => stop event porpogation 
+   // bubbling => child->parent 
+   // eventDelegation -> parent hanfles the events for the children 
+   // capturing => parent->child 
+   
+   
+   //Event bubbling means => when an event happens on a child elemtn ,the event also moves upward to its paraents elements , for example if I click a button inside a div , an event can bubble to the div. I can stop this using event.stopPropogation()
+
+
+
+
+
+    
+</script>
