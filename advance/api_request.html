@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API request</title>
+</head>
+<body>
+
+    // UNSENT -> client has been created , open() not called yet 
+    // OPENED -> open() has been called 
+    // HEADERS_RECEIVED send() has been called and headers and status are available 
+    // LOADING -> Downloading , responseText holds the partial data 
+    // DONE -> The operation is complete 
+
+    
+
+</body>
+<script>
+    const requrl='https://api.github.com/users/kalyanchilamkuri'
+    const xhr=new XMLHttpRequest();
+    xhr.open('GET',requrl);
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState===4){
+            console.log(this.responseText);
+            consolge.log(typeof data);
+            console.log(data.followers);
+        }
+    }
+    xhr.send();
+</script>
+</html>
